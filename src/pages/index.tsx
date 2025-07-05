@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Download, Check, Eye, Copy } from "lucide-react";
+import { Download, Check, Eye, EyeOff } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { motion, AnimatePresence } from "framer-motion";
@@ -108,41 +108,52 @@ const Index = () => {
 
   return (
     <div className="h-screen flex flex-col bg-[#090909] overflow-hidden">
-      <div className="flex-none p-4">
-        <div className="flex justify-end items-center gap-2">
+      <div className="flex items-center justify-between p-4">
+        <div className="flex justify-start items-center gap-2">
           {showSaveIndicator && !isTyping && (
             <div className="text-[#7C3AED] animate-fade-in-out flex items-center gap-1">
               <Check className="w-4 h-4" />
-              <span className="text-sm">Saved</span>
+              <span className="text-md">Saved</span>
             </div>
           )}
+        </div>
+        <div className="flex justify-end items-center gap-2">
           <button
             onClick={() => setShowPreview((prev) => !prev)}
-            className={`bg-transparent hover:bg-[#7C3AED]/40 text-[#7C3AED] rounded-md px-3 py-1 flex items-center gap-2 transition-colors ${
+            className={`bg-transparent hover:bg-[#7C3AED]/20 text-[#7C3AED] rounded-lg px-3 py-1 flex items-center gap-2 transition-colors ${
               showPreview ? "bg-[#7C3AED]/20" : ""
             }`}
           >
-            <Eye className="w-4 h-4" />{" "}
-            {showPreview ? "Hide Preview" : "Preview"}
+            {showPreview ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}{" "}
+            {showPreview ? "Hide" : "Preview"}
           </button>
           <button
             onClick={handleCopy}
-            className="hover:bg-[#7C3AED]/40 text-[#7C3AED] px-3 py-1 transition-colors border border-[#7C3AED] rounded-md w-16 h-[34px] flex items-center justify-center"
+            className="group text-[#7C3AED] px-1.5 py-1 transition-colors border border-[#7C3AED] rounded-lg w-16 h-[36px] flex items-center justify-center"
           >
-            {showCopyIndicator ? <Check size={20} /> : 'Copy'}
+            <span className="h-full group-hover:bg-[#7C3AED]/20 px-1.5 flex items-center justify-center rounded-lg">
+                {showCopyIndicator ? <span className="w-[36.5px] flex justify-center items-center"><Check size={20} /></span> : 'Copy'}
+              </span>
+            
           </button>
           <div className="flex">
             <button
               onClick={handleDownload}
-              className="bg-transparent hover:bg-[#7C3AED]/40 text-[#7C3AED] rounded-l-md rounded-none px-3 py-1 flex items-center gap-2 transition-colors border border-[#7C3AED] border-r-0 focus:z-10"
+              className="group bg-transparent  text-[#7C3AED] rounded-l-md rounded-none px-1.5 flex items-center gap-2 transition-colors border border-[#7C3AED] border-r-0 focus:z-10"
               style={{ borderTopRightRadius: 0, borderBottomRightRadius: 0 }}
             >
-              <Download className="w-4 h-4" /> Download
+              <span className="px-1.5 flex items-center justify-center gap-1 group-hover:bg-[#7C3AED]/20 rounded-lg">
+                <Download className="w-4 h-4" />
+                <span>Download</span>
+              </span>
             </button>
             
             <Select value={downloadFormat} onValueChange={handleFormatChange}>
-              <SelectTrigger className="rounded-md rounded-l-none border-l-0 focus:z-10 outline-none cursor-pointer bg-transparent hover:bg-[#7C3AED]/20 text-[#7C3AED] px-2 py-1 border border-[#7C3AED]">
+              <SelectTrigger className="group w-auto pr-1.5 pl-1 rounded-lg rounded-l-none border-l-0 focus:z-10 outline-none cursor-pointer bg-transparent  text-[#7C3AED] border border-[#7C3AED]">
+              <div className="m-1 group-hover:bg-[#7C3AED]/20 rounded-lg px-1.5 py-0.5">
                 <SelectValue />
+              </div>
+                
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="md">.md</SelectItem>
