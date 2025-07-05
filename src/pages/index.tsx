@@ -90,22 +90,6 @@ const Index = () => {
     localStorage.setItem("notepad-download-format", value);
   };
 
-  // Format the displayed content with styled heading and body text
-  const formatContent = () => {
-    if (!noteContent) return null;
-
-    const lines = noteContent.split("\n");
-    const firstLine = lines[0];
-    const remainingLines = lines.slice(1).join("\n");
-
-    return (
-      <div className="notepad-content">
-        <div className="heading">{firstLine}</div>
-        {remainingLines && <div className="body-text">{remainingLines}</div>}
-      </div>
-    );
-  };
-
   return (
     <div className="h-screen flex flex-col bg-[#090909] overflow-hidden">
       <div className="flex items-center justify-between p-4">
