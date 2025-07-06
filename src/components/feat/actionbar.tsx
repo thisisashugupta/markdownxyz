@@ -23,39 +23,38 @@ export function ActionBar({ actions, className } : { actions: TUseActionsReturn;
     return <div className={`flex items-center justify-between p-4 ${className}`}>
         <SavedIndicator actions={actions} />
         <div className="flex justify-end items-center gap-4">
-            {/*  Preview Button  */}
+
+        {/*  Preview Button  */}
           <button
             onClick={() => setShowPreview((prev) => !prev)}
-            className={`bg-transparent hover:bg-[#7C3AED]/20 text-[#7C3AED] border border-[#7C3AED] rounded-lg px-1.5 w-[36px] h-[36px] flex items-center justify-center gap-2 transition-colors ${
-              showPreview ? "bg-[#7C3AED]/20" : ""
-            }`}
+            className={'p-1 w-[44px] h-[36px] group bg-transparent text-[#7C3AED] border border-[#7C3AED] rounded-lg flex items-center justify-center gap-2 transition-colors'}
           >
-            <span className="h-full group-hover:bg-[#7C3AED]/20 px-1.5 flex items-center justify-center rounded-lg">
+            <span className="h-full group-hover:bg-[#7C3AED]/20 p-1.5 flex items-center justify-center rounded-lg">
                 <span className="flex justify-center items-center">
                     {showPreview ? <EyeOff size={16} /> : <Eye size={16} />}
                 </span>
             </span>
           </button>
-            {/* Copy Button */}
+
+        {/* Copy Button */}
           <button
             onClick={handleCopy}
-            className="group text-[#7C3AED] px-1.5 py-1 transition-colors border border-[#7C3AED] rounded-lg w-[36px] h-[36px] flex items-center justify-center"
+            className="p-1 w-[44px] h-[36px] group text-[#7C3AED] transition-colors border border-[#7C3AED] rounded-lg flex items-center justify-center"
           >
-            <span className="h-full group-hover:bg-[#7C3AED]/20 px-1.5 flex items-center justify-center rounded-lg">
+            <span className="h-full group-hover:bg-[#7C3AED]/20 p-1.5 flex items-center justify-center rounded-lg">
                 <span className="flex justify-center items-center">
                     {showCopyIndicator ? <Check size={16} /> : <Copy size={16} />}
                 </span>
             </span>
-            
-            {/* Download Button */}
           </button>
+
+        {/* Download Button */}
           <div className="flex">
             <button
               onClick={handleDownload}
-              className="group bg-transparent text-[#7C3AED] rounded-l-md rounded-r-none px-1.5 flex items-center gap-2 transition-colors border border-[#7C3AED] border-r-0 focus:z-10"
-              style={{ borderTopRightRadius: 0, borderBottomRightRadius: 0 }}
+              className="p-1 w-[44px] h-[36px] group bg-transparent text-[#7C3AED] rounded-l-md rounded-r-none flex items-center justify-center gap-2 transition-colors border border-[#7C3AED] border-r-0 focus:z-10"
             >
-              <span className="py-1.5 px-1.5 flex items-center justify-center gap-1 group-hover:bg-[#7C3AED]/20 rounded-lg">
+              <span className="p-1.5 flex items-center justify-center gap-1 group-hover:bg-[#7C3AED]/20 rounded-lg">
               <span className="flex justify-center items-center">
                 <Download size={16} />
                 </span>
@@ -67,7 +66,6 @@ export function ActionBar({ actions, className } : { actions: TUseActionsReturn;
               <div className="m-1 group-hover:bg-[#7C3AED]/20 rounded-lg px-1.5 py-0.5">
                 <SelectValue />
               </div>
-                
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="md">.md</SelectItem>
