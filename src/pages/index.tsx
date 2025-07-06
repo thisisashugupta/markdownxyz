@@ -17,8 +17,9 @@ const Index = () => {
 
   return (
     <div className="h-screen flex flex-col bg-[#090909] overflow-hidden">
-      {/* <SavedIndicator actions={actions} className="md:hidden flex p-4" /> */}
-      <ActionBar actions={actions} className="hidden md:flex" />
+      <div className="flex justify-center overflow-hidden">
+        <ActionBar actions={actions} className="hidden md:flex w-full max-w-[1920px]" />
+      </div>
       <div className="flex-1 flex justify-center overflow-hidden">
         <AnimatePresence>
           <div
