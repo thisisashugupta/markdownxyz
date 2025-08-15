@@ -7,7 +7,7 @@ export const useActions: () => TUseActionsReturn = () => {
     const [isTyping, setIsTyping] = useState(false);
     const [showSaveIndicator, setShowSaveIndicator] = useState(false);
     const [showCopyIndicator, setShowCopyIndicator] = useState(false);
-    const [showPreview, setShowPreview] = useState(false);
+    const [showPreview, setShowPreview] = useState(true);
     const [downloadFormat, setDownloadFormat] = useState(() => {
         return localStorage.getItem("notepad-download-format") || "md";
     });
